@@ -1,5 +1,6 @@
 import { makeAudio } from "@solid-primitives/audio";
-import { createSignal } from "solid-js";
+import { createEffect, createSignal, For } from "solid-js";
+import { Fart } from "./fart";
 
 const cowSounds = {
   HURT1: "/sounds/Cow_hurt1.ogg",
@@ -32,6 +33,8 @@ const cdf = Object.values(chances)
 export function Cow() {
   const [score, setScore] = createSignal(0);
 
+  const [farts, setFarts] = createSignal([] as { x: number; y: number }[]);
+
   const players = {
     MOO: makeAudio(cowSounds.MOO),
     HURT1: makeAudio(cowSounds.HURT1),
@@ -51,14 +54,31 @@ export function Cow() {
     player.play();
   };
 
+  createEffect(() => {
+    if (score() % 4 === 0 && score() !== 0) {
+      setFarts((p) => [
+        ...p,
+        {
+          x: getRandom(window.innerWidth - 100),
+          y: getRandom(window.innerHeight - 100),
+        },
+      ]);
+    }
+  });
+
   return (
     <button
-      class="h-full w-fit aspect-square cursor-pointer relative"
+      class="h-full w-fit aspect-square cursor-pointer relative z-0"
       type="button"
       onclick={handleClick}
     >
       <img src="/cow.webp" alt="cow" class="w-fit h-full" />
       <div class="absolute top-5 left-5 text-white">{score()}</div>
+      <For each={farts()}>{(item) => <Fart x={item.x} y={item.y} />}</For>
     </button>
   );
+}
+
+function getRandom(max: number) {
+  return Math.floor(Math.random() * max);
 }
