@@ -15,6 +15,8 @@
     "@solid-primitives/audio": "^1.4.2",
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.3",
+    "jotai": "^2.13.1",
+    "solid-jotai": "^0.3.1",
     "solid-js": "^1.9.9",
     "tailwindcss": "^4.1.12"
   }

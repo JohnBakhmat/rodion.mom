@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css"
+import {Provider as JotaiProvider} from "solid-jotai"
 ---
 
 <html lang="en">
@@ -27,6 +28,8 @@ import "@/styles/global.css"
 
 	</head>
 	<body>
-		<slot/>
+		<JotaiProvider>
+			<slot/>
+		</JotaiProvider>
 	</body>
 </html>

@@ -1,4 +1,5 @@
 import { makeAudio } from "@solid-primitives/audio";
+import { createSignal } from "solid-js";
 
 const cowSounds = {
   HURT1: "/sounds/Cow_hurt1.ogg",
@@ -29,6 +30,8 @@ const cdf = Object.values(chances)
   .map(scan(0));
 
 export function Cow() {
+  const [score, setScore] = createSignal(0);
+
   const players = {
     MOO: makeAudio(cowSounds.MOO),
     HURT1: makeAudio(cowSounds.HURT1),
@@ -42,17 +45,20 @@ export function Cow() {
     const soundIdx = cdf.findIndex((chance) => chance >= Math.random());
     const sound = Object.keys(cowSounds).at(soundIdx) as CowSounds;
 
+    setScore((p) => p + 1);
+
     const player = players[sound];
     player.play();
   };
 
   return (
     <button
-      class="h-full w-fit aspect-square cursor-pointer"
+      class="h-full w-fit aspect-square cursor-pointer relative"
       type="button"
       onclick={handleClick}
     >
       <img src="/cow.webp" alt="cow" class="w-fit h-full" />
+      <div class="absolute top-5 left-5 text-white">{score()}</div>
     </button>
   );
 }
