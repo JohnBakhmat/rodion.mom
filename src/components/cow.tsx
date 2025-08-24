@@ -1,11 +1,6 @@
 import { makeAudio } from "@solid-primitives/audio";
-import { children, type ResolvedChildren } from "solid-js";
 
-type Props = {
-  children: ResolvedChildren;
-};
-
-export function Cow(props: Props) {
+export function Cow() {
   const player = makeAudio("/moo.wav");
 
   return (
@@ -14,7 +9,7 @@ export function Cow(props: Props) {
       type="button"
       onclick={() => player.play()}
     >
-      {props.children}
+      <img src="/cow.webp" alt="cow" class="w-fit h-full" />
     </button>
   );
 }

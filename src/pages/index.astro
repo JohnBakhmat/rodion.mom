@@ -1,7 +1,5 @@
 ---
-import { Image } from 'astro:assets';
 import BaseLayout from "@/layout/base-layout.astro"
-import CowImg from "@/assets/cow.webp"
 import {Cow} from "@/components/cow"
 ---
 
@@ -9,8 +7,6 @@ import {Cow} from "@/components/cow"
 	<div class="w-screen h-screen bg-[linear-gradient(#210040,#3F0175)] grid place-items-center grid-cols-2 max-w-screen max-h-screen">
 		<h1 class="font-sans text-7xl">Привет! Я, Родион!</h1>
 
-		<Cow client:only>
-			<Image src={CowImg} alt="cow" class="h-full aspect-square w-fit"/>
-		</Cow>
+		<Cow client:only="solid-js"/>
 	</div>
 </BaseLayout>
