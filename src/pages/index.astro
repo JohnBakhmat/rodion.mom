@@ -1,16 +1,16 @@
 ---
-
+import { Image } from 'astro:assets';
+import BaseLayout from "@/layout/base-layout.astro"
+import CowImg from "@/assets/cow.webp"
+import {Cow} from "@/components/cow"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+	<div class="w-screen h-screen bg-[linear-gradient(#210040,#3F0175)] grid place-items-center grid-cols-2 max-w-screen max-h-screen">
+		<h1 class="font-sans text-7xl">Привет! Я, Родион!</h1>
+
+		<Cow client:only>
+			<Image src={CowImg} alt="cow" class="h-full aspect-square w-fit"/>
+		</Cow>
+	</div>
+</BaseLayout>
