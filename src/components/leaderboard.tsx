@@ -24,7 +24,7 @@ export function Leaderboard() {
           <p>Error: {leaderboard.error}</p>
         </Match>
         <Match when={leaderboard() !== null}>
-          <div class="flex flex-row gap-5">
+          <div class="flex flex-col gap-5">
             {leaderboard()?.map((entry, idx) => (
               <div
                 data-idx={idx}
