@@ -29,7 +29,7 @@ const setHighscore = (userId: string, score: number) =>
 
 const addUser = (userId: string) => actions.addUser({ userId: userId });
 
-export function Cow(props: { highestScore: number }) {
+export function Cow() {
   const play = useAudioPlayer();
   const [score, setScore] = createSignal(0);
   const [userId, setUserId] = useLocalStorage("user-id", "");

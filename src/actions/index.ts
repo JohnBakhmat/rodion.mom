@@ -40,6 +40,7 @@ export const server = {
       score: z.number(),
     }),
     handler: async (input) => {
+      console.log(input);
       await db
         .insert(Leaderboard)
         .values({
@@ -53,7 +54,8 @@ export const server = {
             highest_score: input.score,
           },
         })
-        .execute();
+        .execute()
+        .catch(() => {});
     },
   }),
 };

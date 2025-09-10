@@ -1,12 +1,17 @@
 ---
 import BaseLayout from "@/layout/base-layout.astro"
 import {Cow} from "@/components/cow"
+import {Leaderboard} from "@/components/leaderboard"
 
 ---
 
 <BaseLayout>
 	<div class="w-screen h-screen overflow-hidden bg-[linear-gradient(#210040,#3F0175)] grid place-items-center grid-cols-2 max-w-screen max-h-screen">
-		<h1 class="font-sans text-7xl">Привет! Я, Родион!</h1>
+		<div class="flex flex-col gap-5">
+			<h1 class="font-sans text-7xl">Привет! Я, Родион!</h1>
+
+			<Leaderboard client:idle/>
+		</div>
 
 		<Cow client:only="solid-js"/>
 	</div>
