@@ -6,6 +6,8 @@ import deno from "@deno/astro-adapter";
 
 import solidJs from "@astrojs/solid-js";
 
+import db from "@astrojs/db";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -14,5 +16,5 @@ export default defineConfig({
 
   output: "server",
   adapter: deno(),
-  integrations: [solidJs()],
+  integrations: [solidJs(), db()],
 });
